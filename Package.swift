@@ -49,6 +49,12 @@ sources += [
 ]
 #endif
 
+extension String {
+    func appending(_ str: String) -> String {
+        return "\(self)\(str)"
+    }
+}
+
 let package = Package(
     name: "CGLFW3",
     products: [
@@ -63,7 +69,7 @@ let package = Package(
                 "CMakeLists.txt", "LICENSE.md", "README.md",
                 "src/CMakeLists.txt"
             ],
-            sources: sources.map("src/".append) + ["include"],
+            sources: sources.map("src/".appending) + ["include"],
             publicHeadersPath: "include",
             cSettings: [
                 .headerSearchPath("src"),
